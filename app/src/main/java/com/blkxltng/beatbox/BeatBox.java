@@ -24,6 +24,8 @@ public class BeatBox {
     private List<Sound> mSounds = new ArrayList<>();
     private SoundPool mSoundPool;
 
+    private float mPlaybackRate = 1.0f;
+
     public BeatBox(Context context) {
         mAssets = context.getAssets();
         //Deprecated constructor, but needed for compatibility
@@ -36,7 +38,11 @@ public class BeatBox {
         if(soundId == null) {
             return;
         }
-        mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, 1.0f);
+        mSoundPool.play(soundId, 1.0f, 1.0f, 1, 0, mPlaybackRate);
+    }
+
+    public void setPlaybackRate(float playbackRate) {
+        mPlaybackRate = playbackRate;
     }
 
     public void release() {
